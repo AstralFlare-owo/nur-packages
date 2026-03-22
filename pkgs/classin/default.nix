@@ -120,7 +120,8 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "ClassIn Online Interactive Classroom";
-    homepage = "https://www.classin.com/";
+    homepage = "https://www.eeo.cn/";
+    sourceProvenance = [ sourceTypes.binaryNativeCode ];
     license = licenses.unfree;
     platforms = [ "x86_64-linux" ];
     maintainers = [ ];

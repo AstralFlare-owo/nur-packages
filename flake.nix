@@ -1,22 +1,14 @@
 {
-  description = "AF's Nix User Repository";
-
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
+  description = "AF's NUR repository";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   outputs = { self, nixpkgs }:
     let
-      system = "x86_64-linux";
-
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
+      forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
     in
     {
-      packages.${system} = import ./pkgs { inherit pkgs; };
-      
-      overlays.default = final: prev: {
-        classin = final.callPackage ./pkgs/classin { };
-      };
+      legacyPackages = forAllSystems (system: import ./default.nix {
+        pkgs = import nixpkgs { inherit system; };
+      });
+      packages = forAllSystems (system: nixpkgs.lib.filterAttrs (_: v: nixpkgs.lib.isDerivation v) self.legacyPackages.${system});
     };
 }
