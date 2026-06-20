@@ -6,7 +6,7 @@
 # commands such as:
 #     nix-build -A mypackage
 
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> { }, bun2nix ? null, ... }:
 
 {
   # The `lib`, `modules`, and `overlays` names are special
@@ -20,6 +20,7 @@
   linuxqq-clipsync = pkgs.callPackage ./pkgs/linuxqq-clipsync { };
   mefrpc = pkgs.callPackage ./pkgs/mefrpc { };
   xwaylandvideobridge = pkgs.kdePackages.callPackage ./pkgs/xwaylandvideobridge { };
+  rikkahub-desktop = pkgs.callPackage ./pkgs/rikkahub-desktop { inherit bun2nix; };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
