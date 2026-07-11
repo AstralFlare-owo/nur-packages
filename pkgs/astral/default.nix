@@ -3,6 +3,7 @@
 , flutter
 , runCommand
 , rustPlatform
+, rustc
 , stdenv
 , pkg-config
 , protobuf
@@ -177,6 +178,7 @@ let
       changelog = "https://github.com/ldoubil/astral/releases/tag/v${version}";
       license = astralLicense;
       mainProgram = "astral";
+      broken = lib.hasPrefix "25.11" lib.version && lib.versionOlder rustc.version "1.95.0";
       platforms = lib.platforms.linux;
     };
   };

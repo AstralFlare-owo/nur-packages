@@ -21,6 +21,8 @@
   hhsh = pkgs.callPackage ./pkgs/hhsh { };
   linuxqq-clipsync = pkgs.callPackage ./pkgs/linuxqq-clipsync { };
   mefrpc = pkgs.callPackage ./pkgs/mefrpc { };
+  pixivbiu = pkgs.callPackage ./pkgs/pixivbiu { inherit bun2nix; };
+  pixivbiu-bin = pkgs.callPackage ./pkgs/pixivbiu-bin { };
   xwaylandvideobridge = pkgs.kdePackages.callPackage ./pkgs/xwaylandvideobridge { };
   rikkahub-desktop = pkgs.callPackage ./pkgs/rikkahub-desktop { inherit bun2nix; };
   rikkahub-desktop-bin = pkgs.callPackage ./pkgs/rikkahub-desktop-bin { };
