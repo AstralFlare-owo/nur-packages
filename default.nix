@@ -15,6 +15,8 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
+  astral = pkgs.callPackage ./pkgs/astral { };
+  astral-bin = pkgs.callPackage ./pkgs/astral-bin { };
   classin = pkgs.callPackage ./pkgs/classin { };
   hhsh = pkgs.callPackage ./pkgs/hhsh { };
   linuxqq-clipsync = pkgs.callPackage ./pkgs/linuxqq-clipsync { };
